@@ -1,0 +1,105 @@
+Working directory :  S9
+Merging L1 and L2 for R1...
+Merging L1 and L2 for R2...
+Bunzipping R1...
+bunzip2: Output file R1.fastq already exists.
+Bunzip R2...
+bunzip2: Output file R2.fastq already exists.
+Trimming barcode R2:5-12, UMI R2:1-4 and R1:1-30...
+mkdir: cannot create directory `lecseq': File exists
+Merging bc, umi and R1 into one file...
+Filtering...
+Quality cut-off: 20
+Minimum percentage: 80
+Input: 90326 reads.
+Output: 86942 reads.
+discarded 3384 (3%) low-quality reads.
+ Moving barcode to header: make sure UMI is on 5th position in the ID...
+Total of 86942 sequences
+Trimming out bc and umi files...
+Map and correct for UMIs...
+/groups/immdiv-bioinfo/evergrande/copy_work/yael/liRNAseq_newdpzpipeline/MapAndCountUMIs_mouse.sh: line 5: cd: S9.fq: Not a directory
+Running tophat...
+mkdir: cannot create directory `thoutfs': File exists
+
+[2016-01-15 17:54:57] Beginning TopHat run (v2.0.10)
+-----------------------------------------------
+[2016-01-15 17:54:57] Checking for Bowtie
+		  Bowtie version:	 2.1.0.0
+[2016-01-15 17:54:57] Checking for Samtools
+		Samtools version:	 0.1.19.0
+[2016-01-15 17:54:57] Checking for Bowtie index files (transcriptome)..
+[2016-01-15 17:54:57] Checking for Bowtie index files (genome)..
+[2016-01-15 17:54:57] Checking for reference FASTA file
+[2016-01-15 17:54:57] Generating SAM header for /groups/immdiv-bioinfo/evergrande/yael/genomes/NOD_custom_mm10/genome
+[2016-01-15 17:55:13] Reading known junctions from GTF file
+[2016-01-15 17:55:17] Preparing reads
+	 left reads: min. length=30, max. length=30, 86709 kept reads (233 discarded)
+[2016-01-15 17:55:18] Using pre-built transcriptome data..
+[2016-01-15 17:55:23] Mapping left_kept_reads to transcriptome known_mm10 with Bowtie2 
+[2016-01-15 17:55:32] Resuming TopHat pipeline with unmapped reads
+[2016-01-15 17:55:32] Mapping left_kept_reads.m2g_um to genome genome with Bowtie2 
+[2016-01-15 17:55:42] Mapping left_kept_reads.m2g_um_seg1 to genome genome with Bowtie2 (1/2)
+[2016-01-15 17:55:52] Mapping left_kept_reads.m2g_um_seg2 to genome genome with Bowtie2 (2/2)
+[2016-01-15 17:56:03] Searching for junctions via segment mapping
+[2016-01-15 17:57:59] Retrieving sequences for splices
+[2016-01-15 18:00:08] Indexing splices
+[2016-01-15 18:00:26] Mapping left_kept_reads.m2g_um_seg1 to genome segment_juncs with Bowtie2 (1/2)
+[2016-01-15 18:00:35] Mapping left_kept_reads.m2g_um_seg2 to genome segment_juncs with Bowtie2 (2/2)
+[2016-01-15 18:00:44] Joining segment hits
+[2016-01-15 18:02:54] Reporting output tracks
+-----------------------------------------------
+[2016-01-15 18:05:01] A summary of the alignment counts can be found in ./thoutfs/align_summary.txt
+[2016-01-15 18:05:01] Run complete: 00:10:04 elapsed
+Removing multiple alignments
+Annotating bam file with gene name...
+Sorting and indexing bam file
+UMI correction: writing correcting bam file and count file...
+command line: Rscript add_umi_id.R exons S9.uniqalign.genenames.sorted.bam 
+current working directory: /groups/immdiv-bioinfo/evergrande/copy_work/yael/FC_01744/Project_yael/mouse_S9-S10/S9/lecseq/thoutfs 
+working on file: S9.uniqalign.genenames.sorted.bam 
+counting reads in: exons 
+PART1: Correcting for UMIs:
+Reads bam and makes a data frame of it
+Keeps only reads with a gene name assigned...
+Extracts UMIs from the read's IDs...
+Filters UMIs to keep distinct ones per gene...
+Writes the UMI corrected bam file...
+PART2: Counts reads in genes
+Error: ReadItem: unknown type 101, perhaps written by later version of R
+Execution halted
+Stats...
+Removing files...
+Copying files...
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@clarinet001-095.orchestra>
+Subject: Job 2926638: </groups/immdiv-bioinfo/evergrande/copy_work/yael/liRNAseq_newdpzpipeline/liRNAseq_pipeline_2_mouse.sh S9 S9> Done
+
+Job </groups/immdiv-bioinfo/evergrande/copy_work/yael/liRNAseq_newdpzpipeline/liRNAseq_pipeline_2_mouse.sh S9 S9> was submitted from host <mezzanine.orchestra> by user <ad249> in cluster <hms_orchestra>.
+Job was executed on host(s) <2*clarinet001-095.orchestra>, in queue <mcore>, as user <ad249> in cluster <hms_orchestra>.
+</home/ad249> was used as the home directory.
+</groups/immdiv-bioinfo/evergrande/copy_work/yael/FC_01744/Project_yael/mouse_S9-S10> was used as the working directory.
+Started at Fri Jan 15 17:54:43 2016
+Results reported at Fri Jan 15 18:05:18 2016
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+/groups/immdiv-bioinfo/evergrande/copy_work/yael/liRNAseq_newdpzpipeline/liRNAseq_pipeline_2_mouse.sh S9 S9
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time   :    671.98 sec.
+    Max Memory :      3133 MB
+    Max Swap   :      3914 MB
+
+    Max Processes  :         9
+    Max Threads    :        14
+
+The output (if any) is above this job summary.
+
